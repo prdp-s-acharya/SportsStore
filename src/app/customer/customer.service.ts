@@ -24,19 +24,47 @@ export class CustomerService {
     getAll(): Observable<customer[]> {
       return this.httpClient.get<customer[]>(this.apiURL + 'customers') 
       .pipe( 
-        catchError<customer[],Observable<customer[]>>(error => {
-          console.log('Caught in CatchError. Returning 0')
-          throw new Error(error)
-        }) 
+        catchError<customer[],Observable<customer[]>>(this.errorHandler) 
       )  
     }
+
     create(post:customer): Observable<customer> {
       return this.httpClient.post(this.apiURL + 'customers', JSON.stringify(post), this.httpOptions)
       .pipe(
-        catchError<any,never>(error=>{
-          console.log("Error at customer post")
-          throw new Error(error)
-        }) 
+        catchError<any,any>(this.errorHandler) 
       )
     }
+
+    find(id:number): Observable<customer> {
+      return this.httpClient.get(this.apiURL + 'customers/' + id) 
+      .pipe( 
+        catchError<any,any>(this.errorHandler)
+      ) 
+    } 
+
+    update(id:number, post:customer): Observable<customer> {  
+      post.id = id;
+      return this.httpClient.put(this.apiURL + 'customers/' + id, JSON.stringify(post), this.httpOptions) 
+      .pipe( 
+        catchError<any,any>(this.errorHandler)  
+      )
+    }
+
+    delete(id:number){
+      console.log(this.apiURL + 'customers/' + id);
+      return this.httpClient.delete(this.apiURL + 'customers/' + id, this.httpOptions) 
+      .pipe(
+        catchError(this.errorHandler)
+      ) 
+    }
+
+    errorHandler(error:any) {
+      let errorMessage = ''; 
+      if(error.error instanceof ErrorEvent) {  
+        errorMessage = error.error.message; 
+      } else {  
+        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`; 
+      } 
+      return throwError(errorMessage);  
+   }
 }

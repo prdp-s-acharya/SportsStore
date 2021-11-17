@@ -19,7 +19,16 @@ export class CustomerIndexComponent implements OnInit {
       this.customers = data;
       console.log(this.customers);
     })
-    
+  }
+
+  deleteCustomer(id:number){
+    console.log(id)
+    this.customerService.delete(id).subscribe(res => {
+         this.customers = this.customers.filter(item => item.id !== id);
+         console.log('Post deleted successfully!');
+    })
+    console.log("completed")
+
   }
 
 }

@@ -9,7 +9,15 @@
                   <p class="card-text">{{customer.address}}</p>
                   <p class="card-text">{{customer.email}}</p>
                   <p class="card-text">{{customer.contactNumber}}</p>
-                  <a href="#" class="btn btn-primary">Orders</a>
+                  <div class="row">
+                    <div class="col-auto mr-auto">
+                        <a href="#" class="btn btn-primary">Orders</a>
+                    </div>
+                    <div class="col-auto">
+                        <button (click)="deleteCustomer(customer.id)"><i class="material-icons md-18">delete</i></button>
+                        <a href="#" [routerLink]="['/customer/update',customer.id]"><i class="material-icons md-18">edit</i></a>
+                    </div>
+                  </div>    
                 </div>
               </div>
     </mat-grid-tile>

@@ -10,10 +10,9 @@ import { CustomerviewComponent } from './customer/customerview/customerview.comp
 const routes: Routes = [
   //{path:'',redirectTo:'customer/index',component:CustomerIndexComponent},
   {path:'customer/index',component:CustomerIndexComponent},
-  {path:'customer/view',component:CustomerviewComponent},
+  {path:'customer/view/:id',component:CustomerviewComponent},
   {path:'customer/create',component:CustomercreateComponent},
-  {path:'customer/update',component:CustomerupdateComponent},
-  {path:'customer/delete',component:CustomerdeleteComponent}
+  {path:'customer/update/:id',component:CustomerupdateComponent},
 ];
 
 @NgModule({
