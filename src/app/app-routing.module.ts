@@ -8,7 +8,7 @@ import { CustomerupdateComponent } from './customer/customerupdate/customerupdat
 import { CustomerviewComponent } from './customer/customerview/customerview.component';
 
 const routes: Routes = [
-  //{path:'/',redirectTo:'customer/index'},
+  //{path:'',redirectTo:'customer/index',component:CustomerIndexComponent},
   {path:'customer/index',component:CustomerIndexComponent},
   {path:'customer/view',component:CustomerviewComponent},
   {path:'customer/create',component:CustomercreateComponent},

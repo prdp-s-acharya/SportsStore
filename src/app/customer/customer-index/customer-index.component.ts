@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../customer.service';
+import { customer } from 'src/shared/Model/customer';
 
 @Component({
   selector: 'app-customer-index',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerIndexComponent implements OnInit {
 
-  constructor() { }
+  customers!:customer []
+  constructor(
+    public customerService:CustomerService
+  ) { }
 
   ngOnInit(): void {
+    this.customerService.getAll().subscribe(data=>{
+      this.customers = data;
+      console.log(this.customers);
+    })
+    
   }
 
 }

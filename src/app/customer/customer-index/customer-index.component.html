@@ -1,1 +1,17 @@
-<p>customer-index works!</p>
+
+<button type="button" class="btn btn-primary" routerLink="/customer/create">new customer</button>
+<mat-grid-list cols="3" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let customer of customers">
+            <div class="card" style="width: 18rem;">
+                <img class="image-fluid  mx-auto d-block" src="assets/images/personfill.png" alt="Card image cap" width="50" height="70">
+                <div class="card-body">
+                  <h2>{{customer.name}}</h2>
+                  <p class="card-text">{{customer.address}}</p>
+                  <p class="card-text">{{customer.email}}</p>
+                  <p class="card-text">{{customer.contactNumber}}</p>
+                  <a href="#" class="btn btn-primary">Orders</a>
+                </div>
+              </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  

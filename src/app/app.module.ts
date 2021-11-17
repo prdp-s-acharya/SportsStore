@@ -9,6 +9,11 @@ import { CustomerviewComponent } from './customer/customerview/customerview.comp
 import { CustomercreateComponent } from './customer/customercreate/customercreate.component';
 import { CustomerupdateComponent } from './customer/customerupdate/customerupdate.component';
 import { CustomerdeleteComponent } from './customer/customerdelete/customerdelete.component';
+import { CustomerService } from './customer/customer.service';
+
+import { HttpClientModule } from '@angular/common/http';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,9 +27,13 @@ import { CustomerdeleteComponent } from './customer/customerdelete/customerdelet
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatGridListModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
