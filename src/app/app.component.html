@@ -15,9 +15,15 @@
       <li class="nav-item active">
         <a class="nav-link" href="#" routerLink='item/index'>Items <span class="sr-only">(current)</span></a>
       </li>
+
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#" *ngIf="authenticated()"  (click)='logout()' routerLink='/login'>logout <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#" *ngIf="!authenticated()" routerLink='/login'>login <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item active" *ngIf="authenticated()">
+        <p class="nav-link">{{username}}</p>
+      </li>
+      
     </ul>
   </div>
 </nav>
