@@ -29,6 +29,9 @@ import { AuthService } from './auth/auth.service';
 import { SessionStorageStrategy } from 'ngx-webstorage';
 import { RegisterComponent } from './auth/register/register.component';
 
+import { UserModule } from './user/user.module';
+import { UserRoutingModule } from './user/user-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +45,8 @@ import { RegisterComponent } from './auth/register/register.component';
     ItemupdateComponent,
     OrderindexComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,9 @@ import { RegisterComponent } from './auth/register/register.component';
     ReactiveFormsModule,
     MatListModule,
     MatTableModule,
-    NgxWebstorageModule.forRoot()
+    NgxWebstorageModule.forRoot(),
+    UserModule,
+    UserRoutingModule
   ],
   providers: [CustomerService,ItemService,AuthService,SessionStorageService,SessionStorageStrategy],
   bootstrap: [AppComponent]

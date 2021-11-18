@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       }  
       else{
         this.localstorageservice.set("user",res)
-        this.router.navigate(["item/index"]);
+        this.router.navigate(["user/item"]);
       }
     });
     console.log(this.customer);
