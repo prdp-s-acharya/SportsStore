@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { item } from 'src/shared/Model/item';
-import { ItemindexComponent } from '../itemindex/itemindex.component';
 import { LocalStorageStrategy } from 'ngx-webstorage';
 
 
@@ -21,7 +20,6 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.stratergy.get("cart").subscribe(res=>{
       this.cart = res
-      console.log(res);
     })
   }
 }
