@@ -1,7 +1,8 @@
 export class item{
-    id!:number
-    name!:string
-    color!:string
-    size!:number
-    price!:number
+    id:number = 0
+    name:string = ""
+    color:string =""
+    size:number =0
+    price:number =0
+    catagory:string=" "
 }

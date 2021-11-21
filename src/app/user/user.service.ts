@@ -25,6 +25,12 @@ export class UserService {
       catchError<item[],Observable<item[]>>(this.errorHandler) 
     )  
   }
+  getAllBycat(cat:string): Observable<item[]> {
+    return this.httpClient.get<item[]>(this.apiURL + 'items/'+cat) 
+    .pipe( 
+      catchError<item[],Observable<item[]>>(this.errorHandler) 
+    )  
+  }
   placeOrder(order:order):Observable<order>{
     console.log("placing order");
     return this.httpClient.post(this.apiURL + 'Orders', JSON.stringify(order), this.httpOptions)

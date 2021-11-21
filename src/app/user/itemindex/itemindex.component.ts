@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { item } from 'src/shared/Model/item';
 import { CartComponent } from '../cart/cart.component';
 import { UserService } from '../user.service';
-import { LocalStorageStrategy } from 'ngx-webstorage';
+import { LocalStorage, LocalStorageStrategy } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-itemindex',
@@ -20,6 +20,21 @@ export class ItemindexComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getAllItem();
+    if(LocalStorage.length>0){
+      this.statergy.get("cart").subscribe(res=>{
+        this.cart = res
+      })
+    }
+  }
+  getItemByCat(cat:string){
+    console.log(cat);
+    this.userservice.getAllBycat(cat).subscribe(data=>{
+      this.items = data;
+      console.log(this.items);
+    })
+  }
+  getAllItem(){
     this.userservice.getAll().subscribe(data=>{
       this.items = data;
       console.log(this.items);

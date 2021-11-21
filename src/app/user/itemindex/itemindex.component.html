@@ -1,22 +1,52 @@
-
-<mat-grid-list cols="3" rowHeight="1:1">
-    <mat-grid-tile *ngFor="let item of items">
-            <div class="card" style="width: 18rem;">
-                <img class="image-fluid  mx-auto d-block" src="assets/images/personfill.png" alt="Card image cap" width="50" height="70">
-                <div class="card-body">
-                  <h2>{{item.name}}</h2>
-                  <p class="card-text">{{item.color}}</p>
-                  <p class="card-text">{{item.size}}</p>
-                  <p class="card-text">{{item.price}}</p>
-                  <div class="row">
-                    <div class="col-auto mr-auto">
-                        <button class="btn btn-primary" (click)="addtocart(item)" *ngIf="isauthenticated()">Add to cart</button>
-                        <button class="btn btn-primary" (click)="addtocart(item)" *ngIf="!isauthenticated()" disabled>Add to cart</button>
-                    </div>
-                  </div>    
+<div class="row">
+  <div class="col-3">
+    <ul class="list-group my-3">
+      <li class="list-group-item h5">Catagory</li>
+      <button class="list-group-item" (click) = "getAllItem()">All</button>
+      <button class="list-group-item" (click) = "getItemByCat('shoe')">Shoe</button>
+      <button class="list-group-item" (click) = "getItemByCat('ball')">Ball</button>
+      <button class="list-group-item" (click) = "getItemByCat('bat')">Bat</button>
+    </ul>
+  </div>
+  <div class="col-9">
+    <mat-grid-list cols="3" rowHeight="1:1.3">
+      <mat-grid-tile *ngFor="let item of items">
+              <div class="card" style="width: 18rem;">
+                  <img class="image-fluid  mx-auto d-block" src="assets/images/personfill.png" alt="Card image cap" width="50" height="70">
+                  <div class="card-body">
+                    <h2>{{item.name}}</h2>
+                    <dl class="row">
+                      <dt class="col-sm-3">Color</dt>
+                      <dd class="col-sm-9">{{item.color}}</dd>
+                      <dt class="col-sm-3">Size</dt>
+                      <dd class="col-sm-9">{{item.size}}</dd>
+                      <dt class="col-sm-3">Price</dt>
+                      <dd class="col-sm-9">{{item.price}}</dd>
+                    </dl>
+                    <div class="row">
+                      <div class="col-auto mr-auto">
+                          <button class="btn btn-primary" (click)="addtocart(item)" *ngIf="isauthenticated()" data-toggle="modal" data-target="#exampleModal">Add to cart</button>
+                          <button class="btn btn-primary" (click)="addtocart(item)" *ngIf="!isauthenticated()" disabled>Add to cart</button>
+                      </div>
+                    </div>    
+                  </div>
                 </div>
-              </div>
-    </mat-grid-tile>
-  </mat-grid-list>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Added to cart</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
   
 
