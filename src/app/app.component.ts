@@ -10,16 +10,15 @@ import { SessionStorage } from 'ngx-webstorage';
 })
 export class AppComponent {
   title = 'sportsStore';
-  username!:string |undefined
+  username:string =""
   constructor(
     public stratergy:SessionStorageStrategy
   ){}
-
   authenticated(){
     if(sessionStorage.length != 0){
-       this.stratergy.get("user").subscribe(res=>{
-        this.username = res.name;
-       });
+      if(!this.isadmin()){
+        this.getusername();
+      }
       return true;
     }
     return false;
@@ -31,6 +30,10 @@ export class AppComponent {
 
   isadmin(){
     return sessionStorage.key(0) == "admin";
+  }
+  getusername(){
+      this.stratergy.get("user").subscribe(res=>{
+        this.username = res.name;})
   }
 
 }

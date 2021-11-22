@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SessionStorage } from 'ngx-webstorage';
+import { SessionStorageStrategy } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-adminlogin',
@@ -10,23 +10,21 @@ import { SessionStorage } from 'ngx-webstorage';
 })
 export class AdminloginComponent implements OnInit {
 
-  form!: FormGroup;
   constructor(
-    public router:Router
+    public router:Router,
+    public Strategy:SessionStorageStrategy
   ) { }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
-    });
+    
   }
-  submit(){
-      console.log("pressed submit");
-      if(this.form.value.email == "admin" && this.form.value.password == "admin"){
-        console.log("pressed submit");
-        sessionStorage.setItem("admin",this.form.value.email);
-        this.router.navigate(["/customer/index"]);  
+  submit(value:any){
+      console.log(value);
+      this.Strategy.set("admin",value);
+      if(value.username == "admin" && value.password == "admin"){
+        console.log(value);
+        //this.Strategy.set("admin",value);
+        this.router.navigateByUrl("/customer/index");  
       }  
       else{
         alert('inavalid credentials')

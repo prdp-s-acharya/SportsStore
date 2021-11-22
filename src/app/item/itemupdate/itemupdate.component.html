@@ -9,16 +9,18 @@
                 formControlName="name"
                 id="name" 
                 type="text" 
+                [(ngModel)]="item.name"
                 class="form-control">
         </div>
         <div class="form-group">
             <label for="color">color:</label>
-            <textarea 
+            <input 
                 formControlName="color"
                 id="color" 
                 type="text" 
+                [(ngModel)]="item.color"
                 class="form-control">
-            </textarea>
+        
         </div>
         <div class="form-group">
             <label for="size">size:</label>
@@ -26,6 +28,7 @@
                 formControlName="size"
                 id="size" 
                 type="text" 
+                [(ngModel)]="item.size"
                 class="form-control">
         </div>
         <div class="form-group">
@@ -33,7 +36,8 @@
             <input 
                 formControlName="price"
                 id="price" 
-                type="text" 
+                type="number" 
+                [(ngModel)]="item.price"
                 class="form-control">
         </div>
         <button class="btn btn-primary" type="submit" >Submit</button>

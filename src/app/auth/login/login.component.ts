@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
   constructor(
     public service:AuthService,
-    public localstorageservice:SessionStorageStrategy,
+    public strategy:SessionStorageStrategy,
     public router:Router
   ) { }
 
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         alert('inavalid credentials')
       }  
       else{
-        this.localstorageservice.set("user",res)
+        this.strategy.set("user",res)
         this.router.navigate(["user/item"]);
       }
     });

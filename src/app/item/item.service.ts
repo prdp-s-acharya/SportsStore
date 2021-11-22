@@ -33,7 +33,7 @@ export class ItemService {
   }
 
   find(id:number): Observable<item> {
-    return this.httpClient.get(this.apiURL + 'items/' + id) 
+    return this.httpClient.get(this.apiURL + 'items/' + id +'/item') 
     .pipe( 
       catchError<any,any>(this.errorHandler)
     ) 

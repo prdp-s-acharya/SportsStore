@@ -11,9 +11,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ItemupdateComponent implements OnInit {
 
-  id!:number;
-  form!: FormGroup;
-  item!:item
+  id:number = 0;
+  form = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    color: new FormControl('', Validators.required),
+    size: new FormControl('', Validators.required),
+    price: new FormControl('', Validators.required),
+
+  });
+  item:item = new item();
 
   constructor(
     public itemService: ItemService,
@@ -25,14 +31,9 @@ export class ItemupdateComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.itemService.find(this.id).subscribe((data: item)=>{
       this.item = data;
+      console.log(this.item);
     });
-    this.form = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      color: new FormControl('', Validators.required),
-      size: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.required),
-
-    });
+    
   }  
   submit(){
     console.log(this.form.value); 
